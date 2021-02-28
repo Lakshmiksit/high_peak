@@ -16,11 +16,12 @@ class Item {
 
 public class Main {
   public static void main(String[] args) throws Exception {
+	  //accessing the input file
     FileInputStream fis=new FileInputStream("input.txt");       
     Scanner sc=new Scanner(fis);
     int number_of_employees = Integer.parseInt(sc.nextLine().split(": ")[1]);
     sc.nextLine(); sc.nextLine(); sc.nextLine();
-
+//listing of all items
     ArrayList<Item> goodies_items = new ArrayList<Item>();
 
     while(sc.hasNextLine())  
@@ -35,7 +36,7 @@ public class Main {
         return a.price - b.price; 
       } 
     });
-
+//computing minimum difference
     int min_diff = goodies_items.get(goodies_items.size()-1).price;
     int min_index = 0;
     for(int i=0;i<goodies_items.size()-number_of_employees+1;i++) {
@@ -48,7 +49,7 @@ public class Main {
     }
     
     
-
+//writing the output.txt file
     FileWriter fw = new FileWriter("output.txt");
     fw.write("The goodies selected for distribution are:\n\n");
     for(int i=min_index;i<min_index + number_of_employees; i++) {
